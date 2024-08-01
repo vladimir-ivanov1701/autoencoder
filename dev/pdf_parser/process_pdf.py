@@ -1,23 +1,12 @@
+import os
+from typing import List, Tuple
+
+import boto3
+from constants import BUCKET_NAME, DESTINATION, PATH_CLEANED, PATH_DIRTY, URL
 from PIL import Image, ImageFilter
 from src.image import LayerImage
-from src.utils import (
-    get_images_from_pdf_page,
-    get_images_from_tiff,
-    tesseract_OSD
-)
-
-from constants import (
-    BUCKET_NAME,
-    DESTINATION,
-    PATH_CLEANED,
-    PATH_DIRTY,
-    URL
-)
-
-from typing import Tuple, List
-
-import os
-import boto3
+from src.utils import (get_images_from_pdf_page, get_images_from_tiff,
+                       tesseract_OSD)
 
 os.environ["AWS_ACCESS_KEY_ID"] = os.environ.get("JUPYTERHUB_USER")
 

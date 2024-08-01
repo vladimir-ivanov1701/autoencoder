@@ -1,22 +1,15 @@
 import warnings
+
 warnings.filterwarnings("ignore")
 
-import os
 import logging
-import shutil
 import multiprocessing
-
+import os
+import shutil
 import sys
 
-from constants import (
-    DS_DIR,
-    BASE_DIR,
-    HOME_DIR,
-    PATH_CLEANED,
-    PATH_DIRTY,
-    DS_DIR,
-    MAX_PROCESSES
-)
+from constants import (BASE_DIR, DS_DIR, HOME_DIR, MAX_PROCESSES, PATH_CLEANED,
+                       PATH_DIRTY)
 
 # настройка окружения - нужно для корректной работы скрипта
 os.environ["TESSDATA_PREFIX"] = f"/home/user/all_files/{BASE_DIR}/var/tessdata"
@@ -27,18 +20,12 @@ os.chdir("/home/user/autoencoder")
 if HOME_DIR not in sys.path:
     sys.path.append(HOME_DIR)
 
+from logging import Logger
 from multiprocessing import get_context, log_to_stderr
 
-from src.pipelines import setup_templates, setup_universal_parser
-
-from logging import Logger
+from process_pdf import initialize, process_one_page, push_to_s3
 from src.pdf import get_pdf_pages_number
-
-from process_pdf import (
-    initialize,
-    push_to_s3,
-    process_one_page
-)
+from src.pipelines import setup_templates, setup_universal_parser
 
 MULTIPROCESSING_CONTEXT = os.environ.get("MULTIPROCESSING_CONTEXT", "spawn")
 IMAGES_PREPROCESSORS_NUMBER = int(os.environ.get("IMAGES_PREPROCESSORS_NUMBER", 4))

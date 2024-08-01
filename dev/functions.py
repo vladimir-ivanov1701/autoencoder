@@ -1,16 +1,11 @@
 import os
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-from torchvision.transforms import transforms
-import cv2
 
-from constants import (
-    DIR_REFERENCES_CLEANED,
-    DIR_REFERENCES_DIRTY,
-    IMG_HEIGHT,
-    IMG_WIDTH,
-    N_EPOCHS
-)
+import cv2
+import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+from constants import (DIR_REFERENCES_CLEANED, DIR_REFERENCES_DIRTY,
+                       IMG_HEIGHT, IMG_WIDTH, N_EPOCHS)
+from torchvision.transforms import transforms
 
 
 def show_pair_img(img, img_path, n_epochs=N_EPOCHS):

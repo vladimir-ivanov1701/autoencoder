@@ -1,21 +1,15 @@
-from torch.utils.data import Dataset, DataLoader
+import os
+from typing import Tuple
+
 import cv2
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from typing import Tuple
-from tqdm import tqdm
-import os
 import torchvision.transforms as T
-
+from constants import DIR_REFERENCES_DIRTY, IMG_HEIGHT, IMG_WIDTH, N_EPOCHS
 from functions import show_pair_img
-
-from constants import (
-    DIR_REFERENCES_DIRTY,
-    N_EPOCHS,
-    IMG_HEIGHT,
-    IMG_WIDTH,
-)
+from torch.utils.data import DataLoader, Dataset
+from tqdm import tqdm
 
 
 class NoisyCleanDataset(Dataset):

@@ -1,31 +1,15 @@
 import os
-import torch
-from torchvision.transforms import transforms
-from sklearn.model_selection import train_test_split
 
 import matplotlib.pyplot as plt
-from constants import (
-    CROP_SIZE,
-    DIR_IMAGES_DIRTY,
-    DIR_IMAGES_CLEANED,
-    DIR_REFERENCES_DIRTY,
-    DUMP_PATH,
-    GRAPH_PATH,
-    IMG_HEIGHT,
-    IMG_WIDTH,
-    N_EPOCHS,
-    PATH_WEIGHTS,
-    RANDOM_STATE,
-    TEST_SIZE,
-    USE_PRETRAINED_MODEL
-)
-from modules import (
-    NoisyCleanDataset,
-    Autoencoder,
-    MyModel
-)
-
+import torch
+from constants import (CROP_SIZE, DIR_IMAGES_CLEANED, DIR_IMAGES_DIRTY,
+                       DIR_REFERENCES_DIRTY, DUMP_PATH, GRAPH_PATH, IMG_HEIGHT,
+                       IMG_WIDTH, N_EPOCHS, PATH_WEIGHTS, RANDOM_STATE,
+                       TEST_SIZE, USE_PRETRAINED_MODEL)
 from functions import show_pair_img
+from modules import Autoencoder, MyModel, NoisyCleanDataset
+from sklearn.model_selection import train_test_split
+from torchvision.transforms import transforms
 
 # Формирование обучающей и тестовой выборки.
 train_imgs, test_imgs = train_test_split(
